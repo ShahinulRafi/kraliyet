@@ -1,22 +1,12 @@
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 import cap1 from "../assets/cap1.png";
 import cap2 from "../assets/cap2.jpg";
 
 const productsData = [
-  {
-    id: 1,
-    name: "Classic Black Cap",
-    price: 500,
-    image: cap1,
-  },
-  {
-    id: 2,
-    name: "Classic Street Cap",
-    price: 500,
-    image: cap2,
-  },
+  { id: 1, name: "Classic Black Cap", price: 500, image: cap1 },
+  { id: 2, name: "Classic Street Cap", price: 500, image: cap2 },
 ];
 
 const Products = () => {
@@ -27,7 +17,6 @@ const Products = () => {
     address: "",
     quantity: 1,
   });
-
   const [errors, setErrors] = useState({});
 
   const openModal = (product) => {
@@ -36,35 +25,25 @@ const Products = () => {
     setErrors({});
   };
 
-  const closeModal = () => {
-    setSelectedProduct(null);
-  };
+  const closeModal = () => setSelectedProduct(null);
 
   const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const validate = () => {
     let newErrors = {};
 
-    if (!form.name || form.name.length < 3) {
+    if (!form.name || form.name.length < 3)
       newErrors.name = "Name must be at least 3 characters";
-    }
 
-    if (!/^[0-9]{11}$/.test(form.phone)) {
+    if (!/^[0-9]{11}$/.test(form.phone))
       newErrors.phone = "Phone must be exactly 11 digits";
-    }
 
-    if (!form.address || form.address.length < 10) {
+    if (!form.address || form.address.length < 10)
       newErrors.address = "Address must be at least 10 characters";
-    }
 
-    if (form.quantity < 1) {
-      newErrors.quantity = "Minimum quantity is 1";
-    }
+    if (form.quantity < 1) newErrors.quantity = "Minimum quantity is 1";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -76,7 +55,6 @@ const Products = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (!validate()) return;
 
     const orderData = {
@@ -86,41 +64,46 @@ const Products = () => {
       total: totalPrice,
     };
 
-    console.log(orderData); // send to backend/firebase later
-    
     emailjs.send(
-      "service_cvnmnjf",
-      "template_i28iyud",
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
       orderData,
-      "Dy8gPVm7lvgmjYIUN",
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
     );
+
     toast.success("Order placed successfully!");
     closeModal();
   };
 
   return (
-    <div className="p-6 text-black bg-white">
-       <Toaster position="top-right" />
+    <div className="p-4 sm:p-6 text-black bg-white">
+      <Toaster position="top-right" />
+
       <h2 className="text-2xl font-bold text-center mb-8">Check Our Caps</h2>
 
-      <div className="bg-gradient-to-br from-[#184946] via-white to-gray-200 rounded-xl p-10">
-        {/* Products */}
-        <div className="flex justify-center gap-84">
+      {/* PRODUCT GRID */}
+      <div className="bg-gradient-to-br from-[#184946] via-white to-gray-200 rounded-xl p-4 sm:p-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 justify-items-center">
           {productsData.map((product) => (
-            <div key={product.id} className="p-4 bg-white rounded-lg shadow-lg">
+            <div
+              key={product.id}
+              className="w-full max-w-xs bg-white rounded-lg shadow-lg p-4 flex flex-col items-center"
+            >
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-64 h-48 object-cover rounded"
+                className="w-full h-48 object-cover rounded"
               />
 
-              <h3 className="mt-4 text-xl font-semibold">{product.name}</h3>
+              <h3 className="mt-4 text-lg font-semibold text-center">
+                {product.name}
+              </h3>
 
               <p className="text-gray-600">৳{product.price}</p>
 
               <button
                 onClick={() => openModal(product)}
-                className="mt-4 px-4 py-2 bg-[#184946] text-white rounded"
+                className="mt-4 px-4 py-2 bg-[#184946] text-white rounded hover:opacity-90 transition"
               >
                 Buy Now
               </button>
@@ -131,9 +114,9 @@ const Products = () => {
 
       {/* MODAL */}
       {selectedProduct && (
-        <div className="fixed inset-0 bg-black/30 flex justify-center items-center">
-          <div className="bg-white p-6 rounded-2xl w-full max-w-md">
-            <h2 className="text-xl font-bold mb-4">
+        <div className="fixed inset-0 bg-black/40 flex justify-center items-center p-4">
+          <div className="bg-white p-4 sm:p-6 rounded-2xl w-full max-w-md">
+            <h2 className="text-lg sm:text-xl font-bold mb-4">
               Order {selectedProduct.name}
             </h2>
 
@@ -166,7 +149,6 @@ const Products = () => {
                 <p className="text-red-500">{errors.address}</p>
               )}
 
-              {/* Autofilled */}
               <input
                 type="text"
                 value={selectedProduct.name}
@@ -193,7 +175,6 @@ const Products = () => {
                 <p className="text-red-500">{errors.quantity}</p>
               )}
 
-              {/* TOTAL */}
               <p className="font-bold text-lg">Total: ৳{totalPrice}</p>
 
               <div className="flex justify-between mt-4">
@@ -207,8 +188,7 @@ const Products = () => {
 
                 <button
                   type="submit"
-                  
-                  className="px-4 py-2 bg-black text-white rounded"
+                  className="px-4 py-2 bg-[#184946] text-white rounded"
                 >
                   Confirm Order
                 </button>

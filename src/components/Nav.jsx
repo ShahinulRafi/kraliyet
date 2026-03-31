@@ -5,7 +5,6 @@ const Nav = () => {
   return (
     <nav className="bg-white shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
-
         {/* Logo + Brand */}
         <div className="flex items-center gap-2">
           <img src={logo} alt="logo" className="w-14 h-14" />
@@ -22,7 +21,15 @@ const Nav = () => {
           <a href="#whyus" className="hover:text-black">
             Why Us
           </a>
-          <a href="#contact" className="hover:text-black">
+          <a
+            onClick={() => {
+              window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: "smooth",
+              });
+            }}
+            className="cursor-pointer hover:text-black"
+          >
             Contact
           </a>
         </div>
@@ -36,7 +43,6 @@ const Nav = () => {
             Buy Now
           </a>
         </div>
-
       </div>
     </nav>
   );

@@ -10,3 +10,11 @@
   font-family: "Urbanist", sans-serif;
   font-optical-sizing: auto;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 20vh;
+}
