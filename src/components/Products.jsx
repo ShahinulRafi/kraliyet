@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
 import toast, { Toaster } from 'react-hot-toast';
+import cap1 from "../assets/cap1.png";
+import cap2 from "../assets/cap2.jpg";
 
 const productsData = [
   {
     id: 1,
     name: "Classic Black Cap",
     price: 500,
-    image: "../assets/cap1.png",
+    image: cap1,
   },
   {
     id: 2,
     name: "Classic Street Cap",
     price: 500,
-    image: "../assets/cap2.jpg",
+    image: cap2,
   },
 ];
 
