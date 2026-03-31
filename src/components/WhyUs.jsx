@@ -1,16 +1,17 @@
 import React from "react";
+import { FaRegGem, FaBolt, FaCheckCircle } from "react-icons/fa";
 
-const About = () => {
+const WhyUs = () => {
   return (
     <section className="py-12 bg-white sm:py-16 lg:py-20">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         
         {/* Heading */}
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl xl:text-5xl">
+          <h2 className="text-3xl font-bold text-[#184946] sm:text-4xl xl:text-5xl">
             Why Choose Our Caps
           </h2>
-          <p className="mt-4 text-base text-gray-600 sm:mt-6">
+          <p className="mt-4 text-base text-[#184946] sm:mt-6">
             Simple. Clean. Reliable caps delivered without drama.
           </p>
         </div>
@@ -20,30 +21,30 @@ const About = () => {
 
           {/* Feature 1 */}
           <div className="p-6">
-            <div className="text-4xl">🧢</div>
-            <h3 className="mt-4 text-xl font-bold text-gray-900">
+            <FaRegGem className="text-5xl mx-auto text-[#184946]" />
+            <h3 className="mt-4 text-xl font-bold text-[#184946]">
               Premium Quality
             </h3>
-            <p className="mt-2 text-gray-600">
+            <p className="mt-2 text-[#184946]">
               Durable materials and clean stitching. No cheap, flimsy caps.
             </p>
           </div>
 
           {/* Feature 2 */}
           <div className="p-6">
-            <div className="text-4xl">⚡</div>
-            <h3 className="mt-4 text-xl font-bold text-gray-900">
+            <FaBolt className="text-5xl mx-auto text-[#184946]" />
+            <h3 className="mt-4 text-xl font-bold text-[#184946]">
               Fast Response
             </h3>
-            <p className="mt-2 text-gray-600">
+            <p className="mt-2 text-[#184946]">
               Orders confirmed quickly. No waiting around wondering if we exist.
             </p>
           </div>
 
           {/* Feature 3 */}
           <div className="p-6">
-            <div className="text-4xl">✔️</div>
-            <h3 className="mt-4 text-xl font-bold text-gray-900">
+            <FaCheckCircle className="text-5xl mx-auto text-[#184946]" />
+            <h3 className="mt-4 text-xl font-bold text-[#184946]">
               Reliable Service
             </h3>
             <p className="mt-2 text-gray-600">
@@ -57,4 +58,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default WhyUs;

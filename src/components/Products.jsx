@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
+import toast, { Toaster } from 'react-hot-toast';
 
 const productsData = [
   {
     id: 1,
     name: "Classic Black Cap",
     price: 500,
-    image: "/cap1.jpg",
+    image: "/src/assets/cap1.png",
   },
   {
     id: 2,
-    name: "White Street Cap",
-    price: 550,
-    image: "/cap2.jpg",
+    name: "Classic Street Cap",
+    price: 500,
+    image: "/src/assets/cap2.jpg",
   },
 ];
 
@@ -84,48 +85,52 @@ const Products = () => {
     };
 
     console.log(orderData); // send to backend/firebase later
+    
     emailjs.send(
       "service_cvnmnjf",
       "template_i28iyud",
       orderData,
       "Dy8gPVm7lvgmjYIUN",
     );
-    alert("Order placed successfully!");
+    toast.success("Order placed successfully!");
     closeModal();
   };
 
   return (
     <div className="p-6 text-black bg-white">
+       <Toaster position="top-right" />
       <h2 className="text-2xl font-bold text-center mb-8">Check Our Caps</h2>
 
-      {/* Products */}
-      <div className="grid md:grid-cols-2 gap-6">
-        {productsData.map((product) => (
-          <div key={product.id} className="border p-4 rounded shadow">
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-full h-48 object-cover rounded"
-            />
+      <div className="bg-gradient-to-br from-[#184946] via-white to-gray-200 rounded-xl p-10">
+        {/* Products */}
+        <div className="flex justify-center gap-84">
+          {productsData.map((product) => (
+            <div key={product.id} className="p-4 bg-white rounded-lg shadow-lg">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="w-64 h-48 object-cover rounded"
+              />
 
-            <h3 className="mt-4 text-xl font-semibold">{product.name}</h3>
+              <h3 className="mt-4 text-xl font-semibold">{product.name}</h3>
 
-            <p className="text-gray-600">৳{product.price}</p>
+              <p className="text-gray-600">৳{product.price}</p>
 
-            <button
-              onClick={() => openModal(product)}
-              className="mt-4 px-4 py-2 bg-black text-white rounded"
-            >
-              Buy Now
-            </button>
-          </div>
-        ))}
+              <button
+                onClick={() => openModal(product)}
+                className="mt-4 px-4 py-2 bg-[#184946] text-white rounded"
+              >
+                Buy Now
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* MODAL */}
       {selectedProduct && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white p-6 rounded w-full max-w-md">
+        <div className="fixed inset-0 bg-black/30 flex justify-center items-center">
+          <div className="bg-white p-6 rounded-2xl w-full max-w-md">
             <h2 className="text-xl font-bold mb-4">
               Order {selectedProduct.name}
             </h2>
@@ -200,6 +205,7 @@ const Products = () => {
 
                 <button
                   type="submit"
+                  
                   className="px-4 py-2 bg-black text-white rounded"
                 >
                   Confirm Order
