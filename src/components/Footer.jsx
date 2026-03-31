@@ -11,18 +11,18 @@ const Footer = () => {
   return (
     <footer className="bg-[#090f0e] text-white px-6 py-12">
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:flex lg:justify-between gap-10">
-
         {/* Brand */}
         <div>
           <div className="flex items-center gap-3">
             <img src={logo} alt="Kraliyet Logo" className="w-14 h-14" />
-            <h2 className="text-xl text-[#184946] font-bold tracking-wide">
+            <h2 className="mt-2 -ml-3 text-xl text-[#184946] font-bold tracking-wide">
               Kraliyet
             </h2>
           </div>
 
           <p className="mt-4 text-gray-400 text-sm leading-relaxed">
-            Premium caps for everyday style. Clean look, solid quality, fast delivery.
+            Premium caps for everyday style. Clean look, solid quality, fast
+            delivery.
           </p>
         </div>
 
@@ -53,7 +53,7 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-4">Contact</h3>
 
           <a
-            href="https://wa.me/8801799633880"
+            href="https://wa.me/8801575808989"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 text-gray-400 hover:text-green-400 transition mb-3"
@@ -63,7 +63,7 @@ const Footer = () => {
           </a>
 
           <a
-            href="https://facebook.com/yourpage"
+            href="https://www.facebook.com/share/18UJAaMfQY/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 text-gray-400 hover:text-blue-400 transition mb-3"
@@ -74,7 +74,7 @@ const Footer = () => {
 
           <p className="flex items-center gap-3 text-gray-400 text-sm mb-2">
             <FaPhoneAlt />
-            01XXXXXXXXX
+            01575808989
           </p>
 
           <p className="flex items-start gap-3 text-gray-400 text-sm leading-relaxed">
@@ -83,7 +83,6 @@ const Footer = () => {
             (Delivery Available Nationwide)
           </p>
         </div>
-
       </div>
 
       {/* Bottom */}
