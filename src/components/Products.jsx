@@ -7,13 +7,13 @@ const productsData = [
     id: 1,
     name: "Classic Black Cap",
     price: 500,
-    image: "/src/assets/cap1.png",
+    image: "../assets/cap1.png",
   },
   {
     id: 2,
     name: "Classic Street Cap",
     price: 500,
-    image: "/src/assets/cap2.jpg",
+    image: "../assets/cap2.jpg",
   },
 ];
 
