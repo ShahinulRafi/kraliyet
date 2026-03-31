@@ -72,10 +72,13 @@ const Footer = () => {
             Facebook
           </a>
 
-          <p className="flex items-center gap-3 text-gray-400 text-sm mb-2">
+          <a
+            href="tel:01575808989"
+            className="flex items-center gap-3 text-gray-400 text-sm mb-2"
+          >
             <FaPhoneAlt />
             01575808989
-          </p>
+          </a>
 
           <p className="flex items-start gap-3 text-gray-400 text-sm leading-relaxed">
             <FaMapMarkerAlt className="mt-1" />
